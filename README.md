@@ -183,7 +183,8 @@ e.g., `DEBUG` disables some optimizations, and `CXX` overrides the default compi
 
 `EXTRA_CXXFLAGS` adds additional C++ compilation flags to ARIA's, e.g.:
 
-    make EXTRA_CXXFLAGS="-mcpu=atom -ffast-math"
+    
+    _CXXFLAGS="-mcpu=atom -ffast-math"
 
 To optimize for a computer with an Intel Atom processor, and math functions in general.
 
@@ -330,7 +331,7 @@ Example program  source code can be found in the `examples/` directory.  View th
 
 On Linux you need to add the `lib` directory to your `LD_LIBRARY_PATH` environment
 variable to run example programs without installing AriaCoda on the system, e.g.:
-
+    
     export LD_LIBRARY_PATH=`pwd`/lib
     cd examples
     make simpleConnect
@@ -385,3 +386,42 @@ be used to use AMRISim, AriaCoda will automatically detect AMRISim if it is runn
 computer, or you can connect remotely to AMRISim using the `-remoteHost` command-line option,
 or network broadcast service discovery (currently implemented in the Python
 wrapper only.)
+
+
+LaViRIA
+-------
+
+
+Hardware
+--------
+
+El robot en el que se instalo AriaCoda es un Pioneer 3-AT con un compútador de 64 bits. 
+
+
+Software Instalado
+------------------ 
+
+El sistema operativo en el que se compilaron las librerias fue Xubuntu 20.04 (Focal Fossa) con las herramientas que tiene instaladas por defecto, GNU C++ (g++/gcc), GNU Make y las herramientas de shell estándar. 
+
+ 
+Instrucciones necesarias para Compilar e Instalar AriaCoda
+----------------------------------------------------------
+
+# Compilación
+En el directorio del código fuente ejecutar el comando:
+
+    make
+
+# Configuración de la ruta de la biblioteca 
+Agragar a variables de entorno:
+
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/AriaCoda/lib
+
+Nota:  Cambiar "~/AriaCoda/lib" por la ruta correcta en tu directorio.
+
+# Instalación 
+Instalación de la biblioteca AriaCoda mediante las instrucciones de Makefile.
+En la carpeta del código fuente ejecutamos la instrucción:
+    
+    sudo make install
+
